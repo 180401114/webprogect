@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Title = "Navbar";
+﻿@using CourseManager.Models
+
+@{
+    var site = (Websitelnfo)ViewBag.Site;
 }
 
 <h2>Navbar</h2>
@@ -13,9 +15,11 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                            <li>@Html.ActionLink("关于", "About", "Home")</li>
-                            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                            @foreach (var link in site.ActionLinks)
+                             { 
+                                 <li>@Html.ActionLink(link.Name,link.Action, link.Controller)</li>
+                               }
+                            
                         </ul>
                     </nav>
                 </div>

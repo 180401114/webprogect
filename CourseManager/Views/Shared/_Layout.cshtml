@@ -8,13 +8,26 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+
+        
     </head>
     <body>
-       @Html.Partial("Navbar")
+       @Html.Action("Navbar","Home")
         <div id="body">
+            <div class="col-md-3">
+                <ul id="menu  sidebar">
+                            <li>@Html.ActionLink("link.Name", "link.Action", " link.Controller", new { area = "" }, new { @class = "navbar-brand"})</li>
+                            <li>@Html.ActionLink("link.Name","link.Action"," link.Controller", new { area = "" }, new { @class = "navbar-brand"})</li>
+                        </ul>
+            </div>
+
+            <div class="col-md-9"> 
+                     @RenderBody()
+
+            </div>
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
+              
             </section>
         </div>
         <footer>
