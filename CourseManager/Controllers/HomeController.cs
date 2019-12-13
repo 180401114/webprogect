@@ -11,8 +11,18 @@ namespace CourseManager.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "修改此模板以快速启动你的 ASP.NET MVC 应用程序。";
+            var siteInfo = new WebsiteInfo("Demo", "RIGHT");
 
-            return View();
+            ViewBag.SiteInfo = siteInfo;
+
+            ViewData["SiteInfo"] = siteInfo;
+
+             // if(new Random().Next(2) == 0)
+            //     return View("~/Views/Home/View.cshtml");
+           // else
+          //     return View(siteInfo);
+
+            return View("~/Views/Home/View.cshtml");
         }
 
         public ActionResult About()
